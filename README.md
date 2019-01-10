@@ -1,5 +1,5 @@
-# vue-chungyo
-
+# e2e-training
+練習編寫可通過e2e測試的Vue專案
 ## Project setup
 ```
 npm install
