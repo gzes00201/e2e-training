@@ -5,12 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e --config ./tests/e2e/vue/nightwatch.config.js",
-    "test:e2e-demo": "vue-cli-service test:e2e --config ./tests/e2e/demo/nightwatch.config.js",
+    "lint": "vue-cli-service lint --fix",
+    "test:e2e": "vue-cli-service test:e2e --config ./tests/e2e/nightwatch.config.js",
+    "test:e2e-demo": "vue-cli-service test:e2e --config ./tests/e2e/nightwatch.config.js --url http://localhost:8080/demo/",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "eslint-plugin-html": "^5.0.0",
+    "repeat-string": "^1.6.1",
     "vue": "^2.5.21",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
@@ -27,7 +29,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-vue": "^5.1.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
     "vue-template-compiler": "^2.5.21"
