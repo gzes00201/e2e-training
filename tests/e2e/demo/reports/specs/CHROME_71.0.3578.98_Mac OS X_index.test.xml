@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="5">
+
+  <testsuite name="specs.index.test"
+    errors="0" failures="0" hostname="" id="" package="index.test" skipped="0"
+    tests="5" time="14.98" timestamp="Thu, 10 Jan 2019 09:38:35 GMT">
+  
+    <testcase name="首頁上有 帳號,密碼輸入框,登入按鈕,註冊按鈕" classname="specs.index.test" time="2.798" assertions="9">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="點選註冊 會連到 註冊頁面" classname="specs.index.test" time="3.456" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="點選登入 如果帳號未輸入 顯示請輸入帳號" classname="specs.index.test" time="1.474" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="點選登入 如果有輸入帳號 未輸入密碼 顯示請輸入密碼" classname="specs.index.test" time="3.564" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="點選登入 如果帳號密碼都有輸入 會連到 HOME" classname="specs.index.test" time="3.692" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>
