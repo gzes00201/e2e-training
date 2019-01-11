@@ -1,6 +1,5 @@
 
 const baseURL = `${process.env.VUE_DEV_SERVER_URL}`
-
 const goHomePage = (client) => {
   client
     .url(baseURL)
