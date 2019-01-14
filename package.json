@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint --fix",
     "test:e2e": "vue-cli-service test:e2e --config ./tests/e2e/nightwatch.config.js ",
-    "test:e2e-demo": "vue-cli-service test:e2e --config ./tests/e2e/nightwatch.config.js --url http://localhost:8080/demo/",
+    "test:e2e-demo": "vue-cli-service test:e2e --mode demo --config ./tests/e2e/nightwatch.config.js",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {

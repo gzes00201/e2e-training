@@ -1,7 +1,7 @@
 // For authoring Nightwatch tests, see
 // http://nightwatchjs.org/guide#usage
 
-const baseURL = `${process.env.VUE_DEV_SERVER_URL}`
+const baseURL = `${process.env.VUE_DEV_SERVER_URL}${process.env.VUE_E2E_BASE_URL}/`
 
 const goHomePage = (client) => {
   client

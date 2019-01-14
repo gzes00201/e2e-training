@@ -1,5 +1,5 @@
 
-const baseURL = `${process.env.VUE_DEV_SERVER_URL}`
+const baseURL = `${process.env.VUE_DEV_SERVER_URL}${process.env.VUE_E2E_BASE_URL}/`
 const goHomePage = (client) => {
   client
     .url(baseURL)
@@ -80,7 +80,7 @@ module.exports = {
     client.click('#register')
     client.pause(1000)
 
-    client.assert.urlEquals(`${process.env.VUE_DEV_SERVER_URL}`)
+    client.assert.urlEquals(baseURL)
 
     closePage(client)
   }
