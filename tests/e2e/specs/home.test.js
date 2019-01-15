@@ -22,7 +22,7 @@ module.exports = {
     client.setValue('#username', 'test')
     client.setValue('#password', 'test')
 
-    client.click('#singin')
+    client.click('#signin')
     client.pause(1000)
 
     client.assert.urlContains(`${baseURL}home`)
