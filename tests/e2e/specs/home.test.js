@@ -1,5 +1,5 @@
 
-const baseURL = `${process.env.VUE_DEV_SERVER_URL}${process.env.VUE_E2E_BASE_URL}/`
+const baseURL = `${process.env.VUE_DEV_SERVER_URL}${process.env.VUE_E2E_BASE_URL}`
 
 const goHomePage = (client) => {
   client
@@ -22,7 +22,7 @@ module.exports = {
     client.setValue('#username', 'test')
     client.setValue('#password', 'test')
 
-    client.click('#singin')
+    client.click('#signin')
     client.pause(1000)
 
     client.assert.urlContains(`${baseURL}home`)

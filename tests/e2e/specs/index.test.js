@@ -1,7 +1,7 @@
 // For authoring Nightwatch tests, see
 // http://nightwatchjs.org/guide#usage
 
-const baseURL = `${process.env.VUE_DEV_SERVER_URL}${process.env.VUE_E2E_BASE_URL}/`
+const baseURL = `${process.env.VUE_DEV_SERVER_URL}${process.env.VUE_E2E_BASE_URL}`
 
 const goHomePage = (client) => {
   client
@@ -27,8 +27,8 @@ module.exports = {
     client.expect.element('#password').to.be.visible
     client.expect.element('#password').to.be.an('input')
 
-    client.expect.element('#singin').to.be.visible
-    client.expect.element('#singin').to.be.an('a')
+    client.expect.element('#signin').to.be.visible
+    client.expect.element('#signin').to.be.an('a')
 
     client.expect.element('#register').to.be.visible
     client.expect.element('#register').to.be.an('a')
@@ -51,7 +51,7 @@ module.exports = {
     browser
       .url(baseURL)
       .waitForElementVisible('body', 5000)
-      .click('#singin')
+      .click('#signin')
       .getAlertText((msg) => {
         browser.assert.equal(msg.value, '請輸入帳號')
       })
@@ -63,7 +63,7 @@ module.exports = {
 
     client.setValue('#username', 'test')
 
-    client.click('#singin')
+    client.click('#signin')
     client.pause(1000)
 
     client.getAlertText((msg) => {
@@ -79,7 +79,7 @@ module.exports = {
     client.setValue('#username', 'test')
     client.setValue('#password', 'test')
 
-    client.click('#singin')
+    client.click('#signin')
     client.pause(1000)
 
     client.assert.urlContains(`${baseURL}home`)
