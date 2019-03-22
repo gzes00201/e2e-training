@@ -1,89 +1,42 @@
-// For authoring Nightwatch tests, see
-// http://nightwatchjs.org/guide#usage
 
-const baseURL = `${process.env.VUE_DEV_SERVER_URL}${process.env.VUE_E2E_BASE_URL}/`
+const baseURL = `${process.env.VUE_DEV_SERVER_URL}${process.env.VUE_E2E_BASE_URL}`
 
-const goHomePage = (client) => {
-  client
-    .url(baseURL)
-    .pause(1000)
-
-  // 等畫面開啟完畢
-  client.expect.element('body').to.be.present.before(1000)
+const COOKIE_SESSION_ID = {
+  name: 'SESSION_ID',
+  value: process.env.VUE_E2E_SESSION_ID,
+  path: '/',
+  domain: '.vir999.net',
+  secure: false,
+  httpOnly: false,
+  expiry: Math.floor(Date.now / 1000) + 360000
+}
+const COOKIE_MFID = {
+  name: 'mfid',
+  value: process.env.VUE_E2E_mfid,
+  path: '/',
+  domain: 'lt.vir999.net',
+  secure: false,
+  httpOnly: false,
+  expiry: Math.floor(Date.now / 1000) + 360000
 }
 
-const closePage = (client) => {
+const sec = 1000
+
+const goBiaLobbyPage = client => client
+    .url('http://lt.vir999.net')
+    .pause(1000)
+    .setCookie(COOKIE_SESSION_ID)
+    .setCookie(COOKIE_MFID)
+    .url('http://lt.vir999.net/pantheon/bia/#/lobby')
+    .waitForElementVisible('#app > div > div.is-lobby', 30 * sec)
+    .pause(3000)
+
+const closePage = client => {
   client.end()
 }
 
 module.exports = {
-  '首頁上有 帳號,密碼輸入框,登入按鈕,註冊按鈕': (client) => {
-    goHomePage(client)
-
-
-    client.expect.element('#username').to.be.visible
-    client.expect.element('#username').to.be.an('input')
-
-    client.expect.element('#password').to.be.visible
-    client.expect.element('#password').to.be.an('input')
-
-    client.expect.element('#signin').to.be.visible
-    client.expect.element('#signin').to.be.an('a')
-
-    client.expect.element('#register').to.be.visible
-    client.expect.element('#register').to.be.an('a')
-
-    closePage(client)
-  },
-
-  '點選註冊 會連到 註冊頁面': (client) => {
-    goHomePage(client)
-
-    client.click('#register')
-    client.pause(1000)
-
-    client.assert.urlContains(`${baseURL}register`)
-
-    closePage(client)
-  },
-
-  '點選登入 如果帳號未輸入 顯示請輸入帳號': (browser) => {
-    browser
-      .url(baseURL)
-      .waitForElementVisible('body', 5000)
-      .click('#signin')
-      .getAlertText((msg) => {
-        browser.assert.equal(msg.value, '請輸入帳號')
-      })
-      .end()
-  },
-
-  '點選登入 如果有輸入帳號 未輸入密碼 顯示請輸入密碼': (client) => {
-    goHomePage(client)
-
-    client.setValue('#username', 'test')
-
-    client.click('#signin')
-    client.pause(1000)
-
-    client.getAlertText((msg) => {
-      client.assert.equal(msg.value, '請輸入密碼')
-    })
-
-    closePage(client)
-  },
-
-  '點選登入 如果帳號密碼都有輸入 會連到 HOME': (client) => {
-    goHomePage(client)
-
-    client.setValue('#username', 'test')
-    client.setValue('#password', 'test')
-
-    client.click('#signin')
-    client.pause(1000)
-
-    client.assert.urlContains(`${baseURL}home`)
-
-    closePage(client)
+  '登入大廳': client => {
+    goBiaLobbyPage(client)
   }
 }
